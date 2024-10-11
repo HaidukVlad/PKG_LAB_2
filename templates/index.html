@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='darkmode.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <title>Image.an</title>
+</head>
+<body>
+<div class="container">
+    <h1>Получи метаданные своего изображения!</h1>
+    <button class="darkmode" title="darkmode switch" aria-hidden="true"></button>
+    <form id="imageForm" action="/upload" method="post" enctype="multipart/form-data">
+        <label for="fileSelectorBtn" class="drop-container" id="dropContainer">
+            <span class="drop-title">Перетащите сюда изображение или выберите файлы</span>
+            <input type="file" id="fileSelectorBtn" accept="image/*" name="images" >
+            <span class="drop-title">Или выберете папку с изображениями</span>
+            <input type="file" id="folderSelectorBtn" accept="image/*" name="images" multiple webkitdirectory>
+        </label>
+        <button type="submit" id="submitBtn">Подтвердить</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Имя файла</th>
+                <th>Размер изображения (px)</th>
+                <th>Разрешение (dot/inch)</th>
+                <th>Глубина цвета</th>
+                <th>Сжатие</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <!-- Данные будут добавлены сюда -->
+        </tbody>
+    </table>
+</div>
+
+<footer class="footer">
+    <div class="waves">
+      <div class="wave" id="wave1"></div>
+      <div class="wave" id="wave2"></div>
+      <div class="wave" id="wave3"></div>
+      <div class="wave" id="wave4"></div>
+    </div>
+    <ul class="social-icon">
+      <li class="social-icon__item"><a class="social-icon__link" href="https://github.com/HaidukVlad">
+          <ion-icon name="logo-github"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="https://x.com/Vladosik7765">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="https://www.linkedin.com/in/владислав-гайдук-7536902b3/">
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="https://www.instagram.com/meat._.dumpling/profilecard/?igsh=MWJ3aXpjYmMyaGk3cw==">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a></li>
+    </ul>
+    <p>&copy;2024 Uladzislau Haiduk | All Rights Reserved</p>
+  </footer>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+<script src="{{ url_for('static', filename='darkmode.js') }}"></script>
+
+</body>
+</html>
