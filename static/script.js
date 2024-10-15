@@ -28,6 +28,32 @@ dropContainer.addEventListener("drop", (e) => {
     }
 });
 
+// Определение функции getRequest
+function getRequest(url) {
+    return fetch(url).then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    let url = document.location;
+    let route = "/flaskwebgui-keep-server-alive";
+    let interval_request = 3 * 1000; // 3 seconds
+
+    // Функция для поддержания активности сервера
+    function keep_alive_server() {
+        getRequest(url + route)
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+    }
+
+    // Правильный вызов setInterval
+    setInterval(keep_alive_server, interval_request);
+});
+
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     const formData = new FormData();

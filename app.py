@@ -7,6 +7,10 @@ app = Flask(__name__, static_folder='static')
 def index():
     return render_template('index.html')
 
+@app.route('/flaskwebgui-keep-server-alive')
+def keep_alive():
+    return jsonify({"status": "alive"})
+
 def get_compression_type(image):
     compression = "Неизвестно"
 
@@ -86,4 +90,4 @@ def upload_image():
     return jsonify({'error': 'Error uploading image'}), 400
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
